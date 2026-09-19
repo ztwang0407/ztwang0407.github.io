@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "参数化手部模型MANO",
+    "title": "MANO手部姿态模型学习",
+    "date": "2026-09-19",
+    "summary": "MANO是**手部版的SMPL:一个可微的参数化三角网格模型。**它用一组很短的参数向量，就能确定一只手的**完整三维形态**--既包括“这是谁的手”(胖瘦大小)，也包括这只手此刻摆成什么样(每根手指弯成什么角度)。",
+    "tags": ["Notes", "Robotics"],
+    "type": "markdown"
+  },
+  {
+    "slug": "LongLLMLingua中最长子序列以及最大公共最短子序列理解",
+    "title": "LongLLMLingua中最长子序列以及最大公共最短子序列理解",
+    "date": "2026-06-19",
+    "summary": "最长子串：在 LLM 响应中找一段在压缩提示里完全匹配的最长连续文字（LLM 复制了压缩提示中的内容）。最大公共最短子序列：回到原始提示中，找到包含这段文字的最短完整片段，把 LLM 复制的“残缺版”替换成“完整版”。",
+    "tags": ["Notes", "LongLLMLingua", "LLM"],
+    "type": "markdown"
+  },
+  {
+    "slug": "LongLLMLingua中r_k计算公式拆解",
+    "title": "LongLLMLingua中r_k计算公式拆解",
+    "date": "2026-06-19",
+    "summary": "rk衡量的是：给定文档后，模型压缩query 所需的期望信息量。rk越高，说明文档让模型预测 query 越轻松，即文档与 query 越相关。用 plogp  而不是标准困惑度，是为了更鲁棒地反映整体的概率质量分布，同时 restrict 语句起到强化关联和抑制幻觉的作用。",
+    "tags": ["Notes", "LongLLMLingua", "LLM"],
+    "type": "markdown"
+  },
+  {
+    "slug": "mGTE方法中的unpadding实现解读",
+    "title": "mGTE方法中的unpadding实现解读",
+    "date": "2026-06-14",
+    "summary": "mGTE 的 unpadding 方法：将 batch 内的 padding tokens 全部去掉，把真实 token 拼接成一个长序列，通过 xFormers 的 variable length attention 在单个长序列上完成各样本的独立注意力计算，从而避免在 padding 上浪费算力，显著加速训练和推理。",
+    "tags": ["Notes", "mGTE", "LLM"],
+    "type": "markdown"
+  },
+  {
+    "slug": "AI同声传译系统",
+    "title": "AI 同声传译系统",
+    "date": "2026-06-05",
+    "summary": "一个基于 React、Node.js、Web Speech API 和硅基流动模型的实时双语字幕与历史纠错系统项目说明。",
+    "tags": ["AI", "Project", "Speech"],
+    "type": "markdown"
+  },
+  {
+    "slug": "2026-06-09-welcome",
+    "title": "\u6b22\u8fce\u6765\u5230\u6211\u7684\u535a\u5ba2",
+    "date": "2026-06-09",
+    "summary": "\u8fd9\u662f\u7b2c\u4e00\u7bc7\u793a\u4f8b\u6587\u7ae0\uff0c\u7528\u6765\u5c55\u793a\u6587\u7ae0\u7d22\u5f15\u548c\u8be6\u60c5\u9875\u6e32\u67d3\u3002",
+    "tags": ["Blog", "Notes"],
+    "type": "markdown"
+  },
+  {
+    "slug": "2026-06-08-how-this-site-publishes",
+    "title": "\u8fd9\u4e2a\u7ad9\u70b9\u5982\u4f55\u53d1\u5e03",
+    "date": "2026-06-08",
+    "summary": "\u4e0d\u7528\u6570\u636e\u5e93\uff0c\u4e5f\u4e0d\u5728\u7f51\u9875\u91cc\u4fdd\u5b58\u5bc6\u94a5\uff0c\u5199\u5b8c\u6587\u7ae0\u540e\u901a\u8fc7\u672c\u5730 git push \u53d1\u5e03\u3002",
+    "tags": ["GitHub", "Guide"],
+    "type": "markdown"
+  }
+]

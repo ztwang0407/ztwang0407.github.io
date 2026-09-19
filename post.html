@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ztwang 的博客文章详情页。">
+    <title>Article - ztwang</title>
+    <!-- 公式样式。想完全离线就把 katex 发行包放到 assets/vendor/katex/，
+         改成 href="assets/vendor/katex/katex.min.css"，
+         并在下面的 preconnect 之前加一行
+         <script>window.KATEX_BASE = "assets/vendor/katex";</script> -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <link rel="stylesheet" href="assets/styles.css?v=20260616">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="回到首页">
+        <span class="brand-mark">Z</span>
+        <span>Ziteng Wang</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">About Me</a>
+        <a aria-current="page" href="articles.html">Blogs</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="publish.html">Publications & Awards</a>
+      </nav>
+    </header>
+
+    <main class="article-shell">
+      <a class="back-link" href="articles.html">返回文章列表</a>
+      <article class="article" id="article">
+        <p class="loading">正在加载文章...</p>
+      </article>
+    </main>
+
+    <footer class="site-footer">
+      <span>© ztwang</span>
+      <span><a href="articles.html">Back to articles</a></span>
+    </footer>
+
+    <script src="assets/vendor/marked.min.js"></script>
+    <script src="assets/vendor/mermaid.min.js"></script>
+    <script src="assets/post.js?v=6" type="module"></script>
+  </body>
+</html>

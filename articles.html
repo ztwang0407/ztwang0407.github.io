@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ztwang 的博客文章列表。">
+    <title>文章 - ztwang</title>
+    <link rel="stylesheet" href="assets/styles.css?v=20260616">
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="回到首页">
+        <span class="brand-mark">Z</span>
+        <span>Ziteng Wang</span>
+      </a>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="index.html">About Me</a>
+        <a aria-current="page" href="articles.html">Blogs</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="publish.html">Publications & Awards</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="articles-hero" aria-labelledby="articles-title">
+        <p class="section-kicker">Blogs</p>
+        <h1 id="articles-title">文章</h1>
+        <p>学习笔记、项目复盘和技术观察会整理在这里。</p>
+      </section>
+
+      <section class="posts-section standalone" aria-labelledby="posts-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Index</p>
+            <h2 id="posts-title">全部文章</h2>
+          </div>
+          <label class="search-box">
+            <span>搜索</span>
+            <input id="searchInput" type="search" placeholder="标题、标签、摘要..." autocomplete="off">
+          </label>
+        </div>
+        <div class="filters" id="tagFilters" aria-label="文章标签筛选"></div>
+        <div class="post-list" id="postList" aria-live="polite"></div>
+        <p class="empty-state hidden" id="emptyState">没有找到匹配的文章。</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© ztwang</span>
+      <span><a href="index.html">返回个人主页</a></span>
+    </footer>
+
+    <script src="assets/home.js?v=6" type="module"></script>
+  </body>
+</html>

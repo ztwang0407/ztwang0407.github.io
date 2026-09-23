@@ -39,7 +39,7 @@
       "about.linksAria": "个人链接",
       "about.imageAlt": "王子腾的照片",
       "about.intro":
-        '我是<a href="https://www.cqut.edu.cn/">重庆理工大学</a>（CQUT）计算机技术专业二年级硕士研究生，具备扎实的计算机与大数据基础，拥有机器学习与深度学习的实践经验，热衷于打造能产生真实世界影响的 AI 解决方案。目前我正在寻找 AI 领域的全职机会，希望发挥所长、不断成长，并创造切实的价值。我随时准备迎接新的挑战，欢迎通过 <a href="mailto:ztwang0407@163.com">ztwang0407@163.com</a> 与我联系！',
+        '我是<a href="https://www.cqut.edu.cn/">重庆理工大学</a>（CQUT）计算机技术专业三年级硕士研究生，具备扎实的计算机与大数据基础，拥有机器学习与深度学习的实践经验，热衷于打造能产生真实世界影响的 AI 解决方案。目前我正在寻找 AI 领域的全职机会，希望发挥所长、不断成长，并创造切实的价值。我随时准备迎接新的挑战，欢迎通过 <a href="mailto:ztwang0407@163.com">ztwang0407@163.com</a> 与我联系！',
       "about.education": "教育经历",
       "about.eduMaster": "计算机技术硕士",
       "about.eduBachelor": "计算机科学与工程学士",

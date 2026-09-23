@@ -181,7 +181,7 @@
       "about.linksAria": "Profile links",
       "about.imageAlt": "Portrait of Ziteng Wang",
       "about.intro":
-        'I am currently a second-year Master’s student specializing in Computer Technology at <a href="https://www.cqut.edu.cn/">Chongqing University of Technology</a> (CQUT). I possess a solid foundation in computer science and big data, along with practical experience in machine learning and deep learning, and I am passionate about developing AI-driven solutions that deliver real-world impact. I am currently seeking full-time opportunities in the AI field, where I hope to apply my expertise, grow professionally, and create meaningful value. I am ready to embrace new challenges and welcome you to contact me at <a href="mailto:ztwang0407@163.com">ztwang0407@163.com</a>!',
+        'I am currently a third-year Master’s student specializing in Computer Technology at <a href="https://www.cqut.edu.cn/">Chongqing University of Technology</a> (CQUT). I possess a solid foundation in computer science and big data, along with practical experience in machine learning and deep learning, and I am passionate about developing AI-driven solutions that deliver real-world impact. I am currently seeking full-time opportunities in the AI field, where I hope to apply my expertise, grow professionally, and create meaningful value. I am ready to embrace new challenges and welcome you to contact me at <a href="mailto:ztwang0407@163.com">ztwang0407@163.com</a>!',
       "about.education": "Education",
       "about.eduMaster": "Master of Computer Technology",
       "about.eduBachelor": "Bachelor of Computer Science and Engineering",

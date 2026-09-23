@@ -132,17 +132,170 @@
 
           <section class="resume-section" id="projects" aria-labelledby="projects-title">
             <h2 id="projects-title" data-i18n="about.projects">Projects</h2>
-            <div class="project-grid">
-              <a class="project-card" href="articles.html">
-                <span data-i18n="about.projBlogKicker">Blog</span>
-                <h3 data-i18n="about.projBlogTitle">Personal Blog</h3>
-                <p data-i18n="about.projBlogDesc">Notes, project logs, and technical writing around AI and software development.</p>
-              </a>
-              <a class="project-card" href="https://github.com/ztwang0407">
-                <span data-i18n="about.projGhKicker">GitHub</span>
-                <h3 data-i18n="about.projGhTitle">Code Repository</h3>
-                <p data-i18n="about.projGhDesc">Experiments, tools, and implementation records from ongoing learning.</p>
-              </a>
+            <!--
+              在校项目卡片：复制一个 <article class="project-card"> ... </article> 就能新增一个项目。
+              双语写法：中文放在 class="lang-zh" 的元素里，英文放在 class="lang-en" 的元素里，
+              切换左上角语言时自动二选一显示，不需要改 i18n.js。
+              主要工作分点：先写一行标签 <p>…主要工作：…</p>，再用 <ul class="lang-zh"><li>…</li></ul> 分点。
+              重点内容高亮：任意文字用 <span class="hl">…</span> 或 <strong class="hl">…</strong> 包起来。
+              卡片默认折叠（只显示标题和时间），鼠标悬停自动展开、移开自动折叠（纯 CSS，见 styles.css）；
+              内容必须包在 <div class="project-body"> > <div class="project-body-inner"> 里才会参与折叠。
+              触屏设备没有 hover，会直接显示完整内容不折叠。
+              想让整张卡片可点击：把 <article class="project-card"> 换成 <a class="project-card" href="项目地址">。
+            -->
+            <div class="project-list">
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh">重庆市公安局巴南区分局人群密度估计系统｜ 项目经理&算法开发</span>
+                    <span class="lang-en">Crowd Density Estimation System for the Chongqing Public Security Bureau (Banan District Branch) | Project Manager & Algorithm Developer</span>
+                  </h3>
+                  <span class="project-date">2025.10 - 2026.03</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">技术栈：</strong>PyTorch、STEERER（HRNet-W18+CountingHead）、密度图后处理（局部极大值检测、连通域分析）</span>
+                    <span class="lang-en"><strong class="project-label">Tech Stack:</strong> PyTorch, STEERER (HRNet-W18 + CountingHead), density map post-processing (local maxima detection, connected component analysis)</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">项目背景：</strong>高空固定摄像头推流至算法平台的多路实时人群密度估计系统：单 GPU 多路并发推理，实时输出人群密度与人数并对区域超限自动预警，已服务演唱会、马拉松等大型活动现场十余次, 如岳云鹏、郭富城重庆演唱会、2025-2026华熙鱼洞跨年活动。</span>
+                    <span class="lang-en"><strong class="project-label">Background:</strong> A real-time, multi-stream crowd density estimation system utilizing high-mounted fixed cameras and an AI algorithm platform: the system supports concurrent inference across multiple video streams on a single GPU, providing real-time crowd density and headcount data alongside automatic alerts for capacity limit violations. It has been deployed at over ten large-scale events—including concerts by Yue Yunpeng and Aaron Kwok in Chongqing and the 2025–2026 New Year's Eve celebration at Huaxi Yudong.</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                    <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                  </p>
+                  <ul class="lang-zh">
+                    <li>基于<strong class="hl">STEERER</strong>构建多摄像头实时人群密度估计系统，采用<strong class="hl">HRNet-W18</strong>骨干与密度回归<strong class="hl">CountingHead</strong>，通过 MOE 多分辨率融合缓解人头尺度差异，输出像素级密度图，实现大型活动现场人群数量统计与超限预警。</li>
+                    <li>为解决单 GPU 多路视频并发下的实时性问题，设计<strong class="hl">取流—推理解耦</strong>管线：各路摄像头独立拉流解码、抽帧入队，经固定容量缓冲仅保留最新帧、丢弃陈旧帧，推理端统一调度消费，避免帧堆积导致延迟膨胀，保障多路并发下的端到端实时性。</li>
+                    <li>针对夜间低光场景的计数鲁棒性问题，设计密度图后处理算法：以<strong class="hl">高斯滤波和阈值积分</strong>抑制噪点假密度、防止计数系统性偏高，通过<strong class="hl">局部极大值搜索</strong>提取人头候选峰、结合连通域统计聚合粘连密度团，从密度图恢复人员位置与计数，解决高密度场景的饱和低估，复杂场景人群计数由约<span class="hl">700</span>修正至<span class="hl">8000</span>人量级，准确率达<span class="hl">90%</span>以上。</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Developed a multi-camera, real-time crowd density estimation system based on <strong class="hl">STEERER</strong>, utilizing the <strong class="hl">HRNet-W18</strong> backbone and a density regression <strong class="hl">CountingHead</strong>. The system employs a Mixture-of-Experts (MoE) multi-resolution fusion strategy to mitigate head-scale variations and outputs pixel-level density maps, enabling crowd counting and capacity-limit alerts for large-scale events.</li>
+                    <li>To address real-time performance challenges associated with concurrent multi-stream processing on a single GPU, a <strong class="hl">stream-inference decoupling</strong> pipeline was designed. Each camera stream independently handles decoding and frame sampling; a fixed-capacity buffer retains only the latest frames while discarding stale ones, and a unified scheduler manages consumption for inference. This prevents latency spikes caused by frame accumulation, ensuring end-to-end real-time performance during concurrent multi-stream processing.</li>
+                    <li>To enhance counting robustness in low-light night scenes, a density map post-processing algorithm was developed. <strong class="hl">Gaussian filtering and thresholded integration</strong> are used to suppress noise-induced false density and prevent systematic overcounting. <strong class="hl">Local maxima search</strong> extracts candidate head peaks, while connected-component statistics aggregate merged density clusters; this approach recovers individual locations and counts from the density map, resolving the saturation-induced underestimation typical of high-density scenarios. Consequently, the crowd count for complex scenes was corrected from approximately <span class="hl">700</span> to the <span class="hl">8,000</span> range, achieving an accuracy exceeding <span class="hl">90%</span>.</li>
+                  </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh">重庆巴南执法办案中心AI智能执法办案系统｜ 项目经理&算法开发</span>
+                    <span class="lang-en">Chongqing Banan Law Enforcement and Case Handling Center AI-Powered Law Enforcement System | Project Manager & Algorithm Developer</span>
+                  </h3>
+                  <span class="project-date">2025.10 - 2026.04</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">技术栈：</strong>PyTorch、YOLOv10、YOLOv10-Pose、AdaFace、ByteTrack</span>
+                    <span class="lang-en"><strong class="project-label">Tech Stack:</strong> PyTorch、YOLOv10、YOLOv10-Pose、AdaFace、ByteTrack</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">项目背景：</strong>基于监控摄像头的中心安防系统：以 AdaFace 人脸识别完成人员身份注册与核验，以 YOLOv10 检测、YOLOv10-Pose 姿态估计与 ByteTrack 多目标跟踪支撑人员定位巡查，对攀高、倒地、睡岗、非法斗殴、擅自离岗五类异常行为实时判定，自动预警上报至告警消息中心。</span>
+                    <span class="lang-en"><strong class="project-label">Background:</strong> A centralized security system based on surveillance cameras: It utilizes AdaFace for personnel identity registration and verification, and employs YOLOv10 detection, YOLOv10-Pose estimation, and ByteTrack multi-object tracking to support personnel localization and patrols. The system performs real-time detection of five types of abnormal behaviors—climbing to heights, falling down, sleeping on duty, fighting, and unauthorized absence—and automatically issues alerts to the alarm notification center.</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                    <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                  </p>
+                  <ul class="lang-zh">
+                    <li>基于 <strong class="hl">AdaFace</strong> 构建人脸注册、识别、检测 REST 服务，支持请求队列削峰与健康检查；针对侧脸、遮挡等复杂视角引入多角度模板匹配与分级阈值策略，识别通过率由<span class="hl">50%</span>提升至<span class="hl">90%</span>。</li>
+                    <li>基于 <strong class="hl">YOLOv10-Pose</strong> 输出的 17 个人体关键点构建行为判定管线，实现倒地、睡岗、非法斗殴检测：倒地以肩髋关键点构成的躯干向量与竖直方向夹角为主特征，联合目标框宽高比与关键点置信度做高召回判定与强过滤，经连续多帧状态确认后触发，误报率由<span class="hl">70%</span>降低至<span class="hl">15%</span>；睡岗以头部关键点跌破肩部连线的低头姿态，叠加关键点长时间低运动方差联合判定，规避低头取物等瞬时动作误报；斗殴对近距离人员对计算腕、肘关键点帧间运动速度与挥臂频率，结合轨迹接近程度多帧确认后触发。</li>
+                    <li>基于 <strong class="hl">ByteTrack</strong> 实现跨帧跟踪与擅自离岗判定：将人脸识别身份与跟踪 ID 绑定，在岗人员轨迹连续断开 6 帧即判定擅自离岗并上报告警中心，目标重新检出后重连轨迹、恢复在岗状态。</li>
+                    <li>基于 <strong class="hl">YOLOv10</strong> 在自定义 AOI 危险区域内进行攀高判定：区域以多边形描述，支持从 JSON 文件按摄像头源加载与动态更新，结合目标框与区域的空间关系判定入侵，并设置告警冷却窗口避免重复告警刷屏。</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Developed REST services for face registration, recognition, and detection based on <strong class="hl">AdaFace</strong>, featuring request queueing for traffic smoothing and health checks; implemented multi-angle template matching and tiered threshold strategies to handle complex perspectives such as profile views and occlusions, increasing the recognition pass rate from <span class="hl">50%</span> to <span class="hl">90%</span>.</li>
+                    <li>Built an action analysis pipeline using 17 human keypoints from <strong class="hl">YOLOv10-Pose</strong> to detect falls, sleeping on duty, and fighting: fall detection relies primarily on the angle between the vertical axis and the torso vector (formed by shoulder and hip keypoints), combined with bounding box aspect ratios and keypoint confidence scores to ensure high recall and effective filtering—triggering only after state confirmation across multiple consecutive frames, which reduced the false positive rate from <span class="hl">70%</span> to <span class="hl">15%</span>; sleeping-on-duty detection identifies a "head-down" posture (where the head keypoint drops below the line connecting the shoulders) combined with low keypoint movement variance over time to avoid false positives from momentary actions like picking up an object; fighting detection monitors close-proximity individuals by calculating inter-frame movement speeds and arm-swing frequencies of wrist and elbow keypoints, triggering an alert after multi-frame confirmation based on trajectory proximity.</li>
+                    <li>Implemented cross-frame tracking and unauthorized absence detection using <strong class="hl">ByteTrack</strong>: linked face recognition identities with tracking IDs; unauthorized absence is flagged and reported to the alarm center if an on-duty person's trajectory is interrupted for 6 consecutive frames, with automatic trajectory reconnection and status restoration upon re-detection.</li>
+                    <li>Implemented high-altitude climbing detection within custom AOI (Area of ​​Interest) danger zones using <strong class="hl">YOLOv10</strong>: zones are defined as polygons and support loading/dynamic updates from JSON files based on camera sources; intrusion is determined by the spatial relationship between the bounding box and the zone, with an alarm cooldown window configured to prevent alert flooding.</li>
+                  </ul>
+                  </div>
+                </div>
+              </article>
+
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh">重庆市巴南区环保局高空烟尘 AI 识别管理系统｜ 算法开发</span>
+                    <span class="lang-en">Chongqing Banan District Environmental Protection Bureau: AI-Based High-Altitude Smoke and Dust Recognition and Management System | Algorithm Development</span>
+                  </h3>
+                  <span class="project-date">2024.10 - 2025.07</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">技术栈：</strong>PyTorch、YOLOv5、射线法</span>
+                    <span class="lang-en"><strong class="project-label">Tech Stack:</strong> PyTorch, YOLOv5, ray-casting method</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">项目背景：</strong>通过视频 AI 监控系统自动识别和定位企业排放以及无组织焚烧等产生的烟雾并实时推送报警。</span>
+                    <span class="lang-en"><strong class="project-label">Background:</strong> An AI-based video monitoring system automatically identifies and pinpoints smoke—such as that from industrial emissions or uncontrolled open burning—and issues real-time alerts.</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                    <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                  </p>
+                  <ul class="lang-zh">
+                    <li>训练 <strong class="hl">YOLOv5</strong> 模型，将 <strong class="hl">pytorch</strong> 模型转换适用于瑞芯的<strong class="hl">RKNN</strong>模型格式并进行相应部署。</li>
+                    <li>通过摄像头点位识别、射线法与区域判断方法设计摄像头点位划分和画面划分，解决目标区域定位问题。</li>
+                    <li>通过图像差分开发静态过滤算法，模型对摄像头上的水珠及远景白色建筑物等静态物体的误报率由<span class="hl">30%</span>降至<span class="hl">5%</span>。</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Train a <strong class="hl">YOLOv5</strong> model, convert the <strong class="hl">PyTorch</strong> model into the <strong class="hl">RKNN</strong> format compatible with Rockchip hardware, and deploy it accordingly.</li>
+                    <li>Address target area localization by designing camera placement and image segmentation strategies using camera point identification, ray-casting, and region-based analysis.</li>
+                    <li>Develop a static filtering algorithm based on image differencing, reducing the model's false-positive rate for static objects—such as water droplets on the camera lens and distant white buildings—from <span class="hl">30%</span> to <span class="hl">5%</span>.</li>
+                  </ul>
+                  </div>
+                </div>
+              </article>
+              
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh">重庆南岸国家数字渔业创新应用基地建设项目 ｜ 项目经理&算法开发</span>
+                    <span class="lang-en">Chongqing Nan'an National Digital Fishery Innovation Application Base Construction Project | Project Manager&Algorithm Development</span>
+                  </h3>
+                  <span class="project-date">2024.10 - 2025.11</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">技术栈：</strong>PyTorch、YOLOv5、DeepLabV3+、OpenCV</span>
+                    <span class="lang-en"><strong class="project-label">Tech Stack:</strong> PyTorch、YOLOv5、DeepLabV3+、OpenCV</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">项目背景：</strong>通过无人机、无人船以及定点摄像头的视频流进行 AI 识别，实现对水库内钓鱼、游泳等非法常见的自动识别和定位，并向管理员发送警报和对无人机、无人船进行相应调度。</span>
+                    <span class="lang-en"><strong class="project-label">Background:</strong> AI-based video analysis using drones, unmanned surface vessels (USVs), and fixed cameras enables the automatic detection and localization of common illicit activities—such as fishing and swimming—within the reservoir, while simultaneously triggering alerts for administrators and coordinating the deployment of drones and USVs.</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                    <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                  </p>
+                  <ul class="lang-zh">
+                    <li>通过爬虫和实地拍摄的方式采集数据，训练 <strong class="hl">YOLOv5</strong> 目标检测模型与 <strong class="hl">DeepLabV3+</strong> 语义分割模型，并将 <strong class="hl">PyTorch</strong> 模型转换成 <strong class="hl">OM</strong> 模型格式，部署至<strong class="hl">华为昇腾 310</strong> 完成端侧推理。</li>
+                    <li>为解决实地数据稀少、检测不精确的问题，开发<strong class="hl">多模型联合检测过滤</strong>算法；开发空间过滤算法，处理同一事件重复报警问题。</li>
+                    <li>设计<strong class="hl">游泳、钓鱼、人员聚集、水面漂浮物、山火</strong> 5 类场景检测体系：漂浮物与山火基于<strong class="hl"> YOLOv5s </strong>训练对应下游识别模型，统一接入告警过滤与上报链路。</li>
+                    <li>基于 <strong class="hl">YOLOv5-Pose</strong> 人体关键点设计游泳/钓鱼行为判别算法：以躯干倾角（肩中点—髋中点连线与竖直方向夹角）一级区分直立与水平姿态，以下肢关键点可见性（水体遮挡导致置信度衰减）与持竿手臂特征（双腕低于肩线、间距收窄）二级细分，关键点模糊样本下沉至水域分割兜底。</li>
+                    <li>针对岸边观赏风景被误判为钓鱼的问题，设计基于 <strong class="hl">DeepLabV3+</strong> 水面分割的区域上下文过滤算法：以检测框左上角、右下角为直径端点作圆，统计圆内水域像素占比，占比处于 <span class="hl">30%~50%</span> 区间判定为钓鱼，形成“姿态判别 + 区域上下文”双级误报抑制。</li>
+                    <li>人员聚集检测：基于 <strong class="hl">YOLOv5s</strong> 人体检测结果，以检测框中心点欧氏距离判定人员接近关系（距离 小于0.5m 判为接近），接近人数超过 4 人时触发聚集告警。</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Collected data via web scraping and on-site photography to train <strong class="hl">YOLOv5</strong> object detection and <strong class="hl">DeepLabV3+</strong> semantic segmentation models; converted <strong class="hl">PyTorch</strong> models to <strong class="hl">OM</strong> format and deployed them on the <strong class="hl">Huawei Ascend 310</strong> for edge-side inference.</li>
+                    <li>Developed a <strong class="hl">multi-model joint detection and filtering</strong> algorithm to address issues with data scarcity and detection inaccuracy; developed a spatial filtering algorithm to handle duplicate alarms for the same event.</li>
+                    <li>Designed a detection system covering five scenarios: <strong class="hl">swimming, fishing, crowd gathering, floating debris, and wildfires</strong>. Specialized downstream recognition models based on <strong class="hl">YOLOv5s</strong> were trained for floating debris and wildfires, with all scenarios integrated into a unified alarm filtering and reporting pipeline.</li>
+                    <li>Designed algorithms to identify swimming and fishing behaviors using <strong class="hl">YOLOv5-Pose</strong> human keypoint detection: a primary classification distinguishes between upright and horizontal postures based on torso inclination (the angle between the vertical axis and the line connecting the mid-shoulder and mid-hip points); a secondary classification refines this based on lower-limb keypoint visibility (confidence degradation due to water occlusion) and rod-holding arm characteristics (both wrists below shoulder line, reduced distance between wrists); samples with ambiguous keypoints are handled by a fallback water-area segmentation mechanism.</li>
+                    <li>To address false positives where people sightseeing on the shore were misidentified as fishing, designed a region-context filtering algorithm based on <strong class="hl">DeepLabV3+</strong> water-surface segmentation: a circle is drawn using the top-left and bottom-right corners of the detection box as diameter endpoints, and the proportion of water-area pixels within the circle is calculated; a proportion in the <span class="hl">30%–50%</span> range triggers a fishing classification, establishing a two-stage false-alarm suppression strategy combining "posture analysis" and "region context."</li>
+                    <li>Crowd gathering detection: Based on <strong class="hl">YOLOv5s</strong> human detection results, proximity between individuals is determined by the Euclidean distance between the centers of the detection boxes (a distance of less than 0.5m is classified as "close proximity"); a gathering alert is triggered when the number of individuals in close proximity exceeds four.</li>
+                  </ul>
+                  </div>
+                </div>
+              </article>
+
             </div>
           </section>
         </div>

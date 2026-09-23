@@ -423,21 +423,26 @@ h3 {
   background: var(--accent-dark);
 }
 
-.project-grid {
+/* 在校项目卡片：标题行（项目名称 + 起止时间）+ 项目背景与主要工作 */
+.project-list {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: 1fr;
+  gap: 14px;
   margin-top: 24px;
 }
 
 .project-card {
-  display: block;
-  min-height: 210px;
-  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px 22px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--surface);
-  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
 }
 
 .project-card:hover {
@@ -445,15 +450,130 @@ h3 {
   box-shadow: var(--shadow);
 }
 
-.project-card span {
-  color: var(--gold);
-  font-size: 0.82rem;
-  font-weight: 850;
-  text-transform: uppercase;
+/* 折叠交互：默认折叠只显示标题和时间，鼠标悬停展开完整内容，移开自动折叠。
+   用 grid-template-rows 0fr -> 1fr 做平滑高度动画（旧浏览器不支持动画时直接切换，功能不受影响）。 */
+.project-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 260ms ease,
+    opacity 200ms ease;
 }
 
-.project-card h3 {
-  margin-top: 16px;
+.project-body-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.project-card:hover .project-body {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+/* 标题行末尾的折叠提示箭头：折叠时朝下，展开后翻转朝上 */
+.project-head::after {
+  flex-shrink: 0;
+  align-self: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  content: "▾";
+  transition: transform 200ms ease;
+}
+
+.project-card:hover .project-head::after {
+  transform: rotate(180deg);
+}
+
+/* 触屏设备没有 hover：直接完整显示，不参与折叠 */
+@media (hover: none) {
+  .project-body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .project-head::after {
+    display: none;
+  }
+}
+
+a.project-card {
+  text-decoration: none;
+}
+
+.project-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-head h3 {
+  margin: 0;
+  font-size: 1.12rem;
+}
+
+.project-date {
+  flex-shrink: 0;
+  color: var(--gold);
+  font-size: 0.88rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.project-body p {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+/* 主要工作分点列表 */
+.project-body ul {
+  margin: 8px 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+}
+
+.project-body li {
+  margin: 4px 0;
+}
+
+.project-body li::marker {
+  color: var(--accent);
+}
+
+/* 重点内容高亮：在任意位置用 <span class="hl">…</span> */
+.hl {
+  color: var(--accent-dark);
+  font-weight: 800;
+}
+
+.project-label {
+  color: var(--accent-dark);
+  font-weight: 850;
+}
+
+/* 双语文案片段：中文包在 .lang-zh、英文包在 .lang-en 里，
+   随 <html lang> 自动二选一显示（内容直接写在 HTML 里，不用进 i18n.js 词典） */
+.lang-zh,
+.lang-en {
+  display: none;
+}
+
+html[lang="zh-CN"] .lang-zh,
+html[lang="en"] .lang-en {
+  display: inline;
+}
+
+/* 行内文字之外，整段/整个列表也可以包在 .lang-zh / .lang-en 里切换 */
+html[lang="zh-CN"] p.lang-zh,
+html[lang="zh-CN"] ul.lang-zh,
+html[lang="zh-CN"] ol.lang-zh,
+html[lang="zh-CN"] div.lang-zh,
+html[lang="en"] p.lang-en,
+html[lang="en"] ul.lang-en,
+html[lang="en"] ol.lang-en,
+html[lang="en"] div.lang-en {
+  display: block;
 }
 
 .academic-page {
@@ -906,10 +1026,6 @@ fieldset > .form-grid {
 
   .post-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
   }
 
   .about-entity {

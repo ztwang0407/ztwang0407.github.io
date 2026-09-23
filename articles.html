@@ -4,52 +4,59 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="ztwang 的博客文章列表。">
-    <title>文章 - ztwang</title>
-    <link rel="stylesheet" href="assets/styles.css?v=20260616">
+    <title data-i18n="articles.docTitle">文章 - ztwang</title>
+    <link rel="stylesheet" href="assets/styles.css?v=20260920">
+    <script src="assets/i18n.js?v=1"></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="回到首页">
-        <span class="brand-mark">Z</span>
-        <span>Ziteng Wang</span>
-      </a>
-      <nav class="nav-links" aria-label="主导航">
-        <a href="index.html">About Me</a>
-        <a aria-current="page" href="articles.html">Blogs</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="publish.html">Publications & Awards</a>
+      <div class="header-left">
+        <a class="brand" href="index.html" aria-label="回到首页" data-i18n-attr="aria-label:common.backHome">
+          <span class="brand-mark">Z</span>
+          <span>Ziteng Wang</span>
+        </a>
+        <div class="lang-switch" role="group" aria-label="切换语言" data-i18n-attr="aria-label:common.langSwitch">
+          <button class="lang-option" type="button" data-lang="zh" aria-pressed="true" aria-label="切换到中文">中</button>
+          <button class="lang-option" type="button" data-lang="en" aria-pressed="false" aria-label="Switch to English">EN</button>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="主导航" data-i18n-attr="aria-label:nav.aria">
+        <a href="index.html" data-i18n="nav.about">About Me</a>
+        <a aria-current="page" href="articles.html" data-i18n="nav.blogs">Blogs</a>
+        <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+        <a href="publish.html" data-i18n="nav.publications">Publications &amp; Awards</a>
       </nav>
     </header>
 
     <main>
       <section class="articles-hero" aria-labelledby="articles-title">
-        <p class="section-kicker">Blogs</p>
-        <h1 id="articles-title">文章</h1>
-        <p>学习笔记、项目复盘和技术观察会整理在这里。</p>
+        <p class="section-kicker" data-i18n="articles.kicker">Blogs</p>
+        <h1 id="articles-title" data-i18n="articles.h1">文章</h1>
+        <p data-i18n="articles.desc">学习笔记、项目复盘和技术观察会整理在这里。</p>
       </section>
 
       <section class="posts-section standalone" aria-labelledby="posts-title">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">Index</p>
-            <h2 id="posts-title">全部文章</h2>
+            <p class="section-kicker" data-i18n="articles.index">Index</p>
+            <h2 id="posts-title" data-i18n="articles.allPosts">全部文章</h2>
           </div>
           <label class="search-box">
-            <span>搜索</span>
-            <input id="searchInput" type="search" placeholder="标题、标签、摘要..." autocomplete="off">
+            <span data-i18n="articles.search">搜索</span>
+            <input id="searchInput" type="search" placeholder="标题、标签、摘要..." autocomplete="off" data-i18n-attr="placeholder:articles.searchPlaceholder">
           </label>
         </div>
-        <div class="filters" id="tagFilters" aria-label="文章标签筛选"></div>
+        <div class="filters" id="tagFilters" aria-label="文章标签筛选" data-i18n-attr="aria-label:articles.filtersAria"></div>
         <div class="post-list" id="postList" aria-live="polite"></div>
-        <p class="empty-state hidden" id="emptyState">没有找到匹配的文章。</p>
+        <p class="empty-state hidden" id="emptyState" data-i18n="articles.empty">没有找到匹配的文章。</p>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>© ztwang</span>
-      <span><a href="index.html">返回个人主页</a></span>
+      <span><a href="index.html" data-i18n="footer.backProfile">返回个人主页</a></span>
     </footer>
 
-    <script src="assets/home.js?v=6" type="module"></script>
+    <script src="assets/home.js?v=7" type="module"></script>
   </body>
 </html>

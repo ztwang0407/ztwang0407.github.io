@@ -2,40 +2,50 @@
   {
     "slug": "参数化手部模型MANO",
     "title": "MANO手部姿态模型学习",
+    "title_en": "Learning the MANO Hand Pose Model",
     "date": "2026-09-19",
     "summary": "MANO是**手部版的SMPL:一个可微的参数化三角网格模型。**它用一组很短的参数向量，就能确定一只手的**完整三维形态**--既包括“这是谁的手”(胖瘦大小)，也包括这只手此刻摆成什么样(每根手指弯成什么角度)。",
+    "summary_en": "MANO is the hand version of SMPL: a differentiable, parameterized triangle-mesh model. With a short parameter vector it determines the **complete 3D shape of a hand** — both whose hand it is (size and proportions) and how the fingers are bent at that moment (the angle of each finger joint).",
     "tags": ["Notes", "Robotics"],
     "type": "markdown"
   },
   {
     "slug": "LongLLMLingua中最长子序列以及最大公共最短子序列理解",
     "title": "LongLLMLingua中最长子序列以及最大公共最短子序列理解",
+    "title_en": "Understanding the Longest Substring and Shortest Common Supersequence in LongLLMLingua",
     "date": "2026-06-19",
     "summary": "最长子串：在 LLM 响应中找一段在压缩提示里完全匹配的最长连续文字（LLM 复制了压缩提示中的内容）。最大公共最短子序列：回到原始提示中，找到包含这段文字的最短完整片段，把 LLM 复制的“残缺版”替换成“完整版”。",
+    "summary_en": "Longest substring: find the longest contiguous span in the LLM response that exactly matches the compressed prompt (the LLM copied it from the compressed prompt). Shortest common supersequence: go back to the original prompt, locate the shortest complete span that contains that text, and replace the LLM's “incomplete copy” with the “complete version”.",
     "tags": ["Notes", "LongLLMLingua", "LLM"],
     "type": "markdown"
   },
   {
     "slug": "LongLLMLingua中r_k计算公式拆解",
     "title": "LongLLMLingua中r_k计算公式拆解",
+    "title_en": "Breaking Down the r_k Formula in LongLLMLingua",
     "date": "2026-06-19",
     "summary": "rk衡量的是：给定文档后，模型压缩query 所需的期望信息量。rk越高，说明文档让模型预测 query 越轻松，即文档与 query 越相关。用 plogp  而不是标准困惑度，是为了更鲁棒地反映整体的概率质量分布，同时 restrict 语句起到强化关联和抑制幻觉的作用。",
+    "summary_en": "r_k measures the expected information the model still needs to predict the query given a document. A higher r_k means the document makes predicting the query easier, i.e. the document is more relevant to the query. Using plogp instead of standard perplexity reflects the overall probability-mass distribution more robustly, while the restrict statement reinforces relevance and suppresses hallucination.",
     "tags": ["Notes", "LongLLMLingua", "LLM"],
     "type": "markdown"
   },
   {
     "slug": "mGTE方法中的unpadding实现解读",
     "title": "mGTE方法中的unpadding实现解读",
+    "title_en": "Inside the Unpadding Implementation of mGTE",
     "date": "2026-06-14",
     "summary": "mGTE 的 unpadding 方法：将 batch 内的 padding tokens 全部去掉，把真实 token 拼接成一个长序列，通过 xFormers 的 variable length attention 在单个长序列上完成各样本的独立注意力计算，从而避免在 padding 上浪费算力，显著加速训练和推理。",
+    "summary_en": "mGTE's unpadding removes all padding tokens in a batch, concatenates the real tokens into one long sequence, and uses xFormers variable-length attention to compute each sample's attention independently over that single sequence — avoiding wasted compute on padding and significantly speeding up training and inference.",
     "tags": ["Notes", "mGTE", "LLM"],
     "type": "markdown"
   },
   {
     "slug": "AI同声传译系统",
     "title": "AI 同声传译系统",
+    "title_en": "AI Simultaneous Interpretation System",
     "date": "2026-06-05",
     "summary": "一个基于 React、Node.js、Web Speech API 和硅基流动模型的实时双语字幕与历史纠错系统项目说明。",
+    "summary_en": "A project write-up of a real-time bilingual captioning and history-correction system built with React, Node.js, the Web Speech API, and SiliconFlow models.",
     "tags": ["AI", "Project", "Speech"],
     "type": "markdown"
   }

@@ -1,4 +1,4 @@
-import { extractMath, renderMathHtml } from "./math.js?v=6";
+import { extractMath, renderMathHtml } from "./math.js?v=7";
 
 const escapeMap = new Map([
   ["&", "&amp;"],
@@ -10,6 +10,12 @@ const escapeMap = new Map([
 
 export function escapeHtml(value = "") {
   return String(value).replace(/[&<>"']/g, (char) => escapeMap.get(char));
+}
+
+/** 阅读时长文案跟随界面语言：“X 分钟阅读” / “X min read”。 */
+export function i18nReadTime(minutes) {
+  const t = window.BlogI18N ? window.BlogI18N.t : (key) => key;
+  return t("meta.minRead", { n: minutes });
 }
 
 const ABSOLUTE_URL = /^[a-z][a-z0-9+.-]*:/i;
@@ -191,7 +197,7 @@ export function postHeader(post = {}) {
 
   const readTime =
     kind === "markdown"
-      ? `<span>${readingTime(post.content || post.summary || "")} min read</span>`
+      ? `<span>${escapeHtml(i18nReadTime(readingTime(post.content || post.summary || "")))}</span>`
       : "";
 
   const summary = post.summary ? `<p>${renderInlineMarkdown(post.summary)}</p>` : "";
@@ -214,7 +220,9 @@ export function formatDate(value) {
   if (!value) return "";
   const date = new Date(`${value}T00:00:00`);
   if (Number.isNaN(date.getTime())) return escapeHtml(String(value));
-  return new Intl.DateTimeFormat("zh-CN", {
+  // 跟随左上角语言切换：中文「2026年9月19日」/ 英文「September 19, 2026」
+  const locale = window.BlogI18N && window.BlogI18N.getLang() === "en" ? "en-US" : "zh-CN";
+  return new Intl.DateTimeFormat(locale, {
     year: "numeric",
     month: "long",
     day: "numeric",

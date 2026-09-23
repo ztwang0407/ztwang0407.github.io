@@ -89,6 +89,58 @@ textarea {
   background: var(--accent-dark);
 }
 
+/* 导航栏左上角：品牌 + 中英切换 */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.lang-option {
+  min-height: 28px;
+  padding: 3px 12px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    color 140ms ease,
+    background 140ms ease;
+}
+
+.lang-option:hover {
+  color: var(--accent-dark);
+}
+
+.lang-option.active {
+  color: #fff;
+  background: var(--accent-dark);
+}
+
+/* 正文语言与界面语言不一致时的提示条 */
+.lang-notice {
+  margin: -8px 0 28px;
+  padding: 12px 16px;
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  color: var(--muted);
+  background: var(--accent-soft);
+  font-size: 0.94rem;
+}
+
 .nav-links {
   flex-wrap: wrap;
   justify-content: flex-end;
@@ -883,6 +935,11 @@ fieldset > .form-grid {
 
   .site-header {
     position: static;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
   }
 
   main {

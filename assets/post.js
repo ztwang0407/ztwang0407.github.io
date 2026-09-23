@@ -5,8 +5,8 @@ import {
   renderMarkdown,
   renderMermaid,
   resolveRelativeUrl,
-} from "./markdown.js?v=6";
-import { ensureKatex, hasKatex } from "./math.js?v=6";
+} from "./markdown.js?v=7";
+import { ensureKatex, hasKatex } from "./math.js?v=7";
 import {
   POSTS_DIR,
   POST_KIND,
@@ -14,8 +14,14 @@ import {
   postHeight,
   postKind,
   postLabel,
+  postLang,
+  postSummary,
+  postTitle,
   resolvePostFile,
-} from "./posts.js?v=6";
+  uiLang,
+} from "./posts.js?v=7";
+
+const i18n = window.BlogI18N || { t: (key) => key, getLang: () => "zh", LANG_EVENT: "bloglangchange" };
 
 const article = document.querySelector("#article");
 const params = new URLSearchParams(window.location.search);
@@ -39,18 +45,41 @@ function displayPath(file) {
   }
 }
 
-async function fetchText(url, label) {
+function suffixPeriod() {
+  return i18n.getLang() === "zh" ? "。" : "";
+}
+
+async function fetchText(url, labelKey, params = {}) {
   const response = await fetch(url, { cache: "no-store" });
-  if (!response.ok) throw new Error(`${label}加载失败（HTTP ${response.status}）`);
+  if (!response.ok) {
+    throw new Error(i18n.t("post.httpError", { label: i18n.t(labelKey), status: response.status, ...params }));
+  }
   return response.text();
 }
 
 async function loadIndex() {
   const response = await fetch(`${POSTS_DIR}/index.json`, { cache: "no-store" });
-  if (!response.ok) throw new Error("文章索引加载失败");
+  if (!response.ok) throw new Error(i18n.t("post.httpError", { label: i18n.t("post.indexLabel"), status: response.status }));
   const posts = await response.json();
-  if (!Array.isArray(posts)) throw new Error("文章索引格式不正确");
+  if (!Array.isArray(posts)) throw new Error(i18n.t("post.indexBadFormat"));
   return posts;
+}
+
+/* ------------------------------------------------------------------ *
+ * 正文语言提示：界面语言与正文语言不一致时给出说明
+ * ------------------------------------------------------------------ */
+
+function contentLangNotice(post) {
+  if (postKind(post, uiLang()) !== POST_KIND.MARKDOWN) return "";
+  const hasEn = Boolean(String(post.file_en || "").trim());
+  const hasZh = Boolean(String(post.file_zh || "").trim());
+  if (uiLang() === "en" && !hasEn) {
+    return `<p class="lang-notice">${escapeHtml(i18n.t("post.zhOnly"))}</p>`;
+  }
+  if (uiLang() === "zh" && postLang(post) === "en" && !hasZh) {
+    return `<p class="lang-notice">${escapeHtml(i18n.t("post.enOnly"))}</p>`;
+  }
+  return "";
 }
 
 /* ------------------------------------------------------------------ *
@@ -63,8 +92,8 @@ function embedToolbar(post, file) {
       <span class="type-badge">${escapeHtml(post.kindLabel)}</span>
       <span class="embed-name">${escapeHtml(displayPath(file))}</span>
       <span class="embed-actions">
-        <a href="${escapeHtml(file)}" target="_blank" rel="noopener">新窗口打开</a>
-        ${post.kind === POST_KIND.PDF ? `<a href="${escapeHtml(file)}" download>下载</a>` : ""}
+        <a href="${escapeHtml(file)}" target="_blank" rel="noopener">${escapeHtml(i18n.t("post.openNewTab"))}</a>
+        ${post.kind === POST_KIND.PDF ? `<a href="${escapeHtml(file)}" download>${escapeHtml(i18n.t("post.download"))}</a>` : ""}
       </span>
     </div>
   `;
@@ -86,10 +115,7 @@ function renderPdf(post, file) {
         title="${escapeHtml(post.title)}"${heightAttribute(post)}
         loading="lazy"
       ></iframe>
-      <p class="embed-hint">
-        没有显示内容？请<a href="${escapeHtml(file)}" target="_blank" rel="noopener">在新窗口打开 PDF</a>
-        （移动端浏览器一般不支持内嵌预览）。
-      </p>
+      <p class="embed-hint">${i18n.t("post.pdfHint", { file: escapeHtml(file) })}</p>
     </div>
   `;
 }
@@ -104,11 +130,7 @@ function renderHtmlEmbed(post, file) {
         title="${escapeHtml(post.title)}"${heightAttribute(post)}
         loading="lazy"
       ></iframe>
-      <p class="embed-hint">
-        页面在独立容器里原样渲染。如果显示异常，可以
-        <a href="${escapeHtml(file)}" target="_blank" rel="noopener">在新窗口打开</a>，
-        或在 index.json 里把这一篇改成 <code>"embed": "inline"</code> 让它融入本站排版。
-      </p>
+      <p class="embed-hint">${i18n.t("post.htmlHint", { file: escapeHtml(file) })}</p>
     </div>
   `;
 }
@@ -138,7 +160,7 @@ function autoSizeFrame(frame) {
 }
 
 async function renderInlineHtmlPost(post, file) {
-  const raw = await fetchText(file, "文章正文");
+  const raw = await fetchText(file, "post.bodyLabel");
   const doc = new DOMParser().parseFromString(raw, "text/html");
 
   doc
@@ -163,15 +185,12 @@ async function renderInlineHtmlPost(post, file) {
   });
 
   const body = doc.body?.innerHTML?.trim() || "";
-  if (!body) throw new Error("这个 HTML 文件里没有可显示的内容");
+  if (!body) throw new Error(i18n.t("post.noContent"));
 
   article.innerHTML = `
     ${postHeader(post)}
     <div class="html-post">${body}</div>
-    <p class="embed-hint">
-      该 HTML 文章以 <code>"embed": "inline"</code> 方式嵌入，原文样式已移除；
-      想保留原页面外观就去掉 index.json 里的这个字段。
-    </p>
+    <p class="embed-hint">${i18n.t("post.inlineHint")}</p>
   `;
   attachExternalLinks(article);
 }
@@ -185,8 +204,7 @@ function notifyMathFallback() {
   if (!article.querySelector(".math-fallback")) return;
   const notice = document.createElement("p");
   notice.className = "math-notice";
-  notice.textContent =
-    "公式渲染库（KaTeX）没能加载，下面按 LaTeX 原文显示。检查网络后刷新页面即可恢复。";
+  notice.textContent = i18n.t("post.mathFallback");
   article.querySelector("header")?.after(notice);
 }
 
@@ -196,21 +214,29 @@ function notifyMathFallback() {
 
 async function loadArticle() {
   if (!slug) {
-    article.innerHTML = '<p class="empty-state">缺少文章 slug。</p>';
+    article.innerHTML = `<p class="empty-state">${escapeHtml(i18n.t("post.missingSlug"))}</p>`;
     return;
   }
 
   try {
     const posts = await loadIndex();
     const post = posts.find((item) => item.slug === slug);
-    if (!post) throw new Error("没有找到这篇文章");
+    if (!post) throw new Error(i18n.t("post.notFound"));
 
-    const kind = postKind(post);
-    const file = resolvePostFile(post);
-    const view = { ...post, kind, kindLabel: postLabel(post) };
+    const lang = uiLang();
+    const kind = postKind(post, lang);
+    const file = resolvePostFile(post, lang);
+    const view = {
+      ...post,
+      title: postTitle(post),
+      summary: postSummary(post),
+      kind,
+      kindLabel: postLabel(post),
+    };
 
-    document.title = `${post.title} - ztwang`;
+    document.title = `${view.title} - ztwang`;
     article.classList.toggle("article-wide", kind !== POST_KIND.MARKDOWN);
+    const notice = contentLangNotice(post);
 
     if (kind === POST_KIND.PDF) {
       article.innerHTML = `${postHeader(view)}${renderPdf(view, file)}`;
@@ -229,8 +255,8 @@ async function loadArticle() {
     }
 
     // markdown：正文和 KaTeX 并行加载
-    const [content] = await Promise.all([fetchText(file, "文章正文"), ensureKatex()]);
-    article.innerHTML = `${postHeader({ ...view, content })}${renderMarkdown(content, {
+    const [content] = await Promise.all([fetchText(file, "post.bodyLabel"), ensureKatex()]);
+    article.innerHTML = `${postHeader({ ...view, content })}${notice}${renderMarkdown(content, {
       basePath: dirOf(file) || POSTS_DIR,
     })}`;
     await renderMermaid(article);
@@ -238,8 +264,13 @@ async function loadArticle() {
     notifyMathFallback();
   } catch (error) {
     article.classList.remove("article-wide");
-    article.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}。</p>`;
+    article.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}${escapeHtml(suffixPeriod())}</p>`;
   }
 }
+
+/* 左上角切换语言后，重新按当前语言渲染文章（标题/摘要/提示语/译文文件） */
+document.addEventListener(i18n.LANG_EVENT, () => {
+  loadArticle();
+});
 
 loadArticle();

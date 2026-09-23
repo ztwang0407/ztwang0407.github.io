@@ -4,36 +4,43 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Publications and awards of Ziteng Wang.">
-    <title>Publications & Awards - Ziteng Wang</title>
+    <title data-i18n="pub.h1">Publications &amp; Awards - Ziteng Wang</title>
     <link rel="icon" href="assets/images/icon.avif">
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="assets/styles.css?v=20260920">
+    <script src="assets/i18n.js?v=1"></script>
   </head>
   <body>
     <header class="site-header">
-      <a class="brand" href="index.html" aria-label="Back to home">
-        <span class="brand-mark">Z</span>
-        <span>Ziteng Wang</span>
-      </a>
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="index.html">About Me</a>
-        <a href="articles.html">Blogs</a>
-        <a href="index.html#projects">Projects</a>
-        <a aria-current="page" href="publish.html">Publications & Awards</a>
+      <div class="header-left">
+        <a class="brand" href="index.html" aria-label="Back to home" data-i18n-attr="aria-label:common.backHome">
+          <span class="brand-mark">Z</span>
+          <span>Ziteng Wang</span>
+        </a>
+        <div class="lang-switch" role="group" aria-label="Language" data-i18n-attr="aria-label:common.langSwitch">
+          <button class="lang-option" type="button" data-lang="zh" aria-pressed="false" aria-label="切换到中文">中</button>
+          <button class="lang-option" type="button" data-lang="en" aria-pressed="true" aria-label="Switch to English">EN</button>
+        </div>
+      </div>
+      <nav class="nav-links" aria-label="Main navigation" data-i18n-attr="aria-label:nav.aria">
+        <a href="index.html" data-i18n="nav.about">About Me</a>
+        <a href="articles.html" data-i18n="nav.blogs">Blogs</a>
+        <a href="index.html#projects" data-i18n="nav.projects">Projects</a>
+        <a aria-current="page" href="publish.html" data-i18n="nav.publications">Publications &amp; Awards</a>
       </nav>
     </header>
 
     <main class="academic-page">
       <header class="page-title">
-        <p class="section-kicker">Academic Profile</p>
-        <h1>Publications & Awards</h1>
+        <p class="section-kicker" data-i18n="pub.kicker">Academic Profile</p>
+        <h1 data-i18n="pub.h1">Publications &amp; Awards</h1>
       </header>
 
       <section class="academic-layout" aria-labelledby="publications-title">
         <article class="academic-section" id="publications">
           <div class="section-heading compact">
             <div>
-              <p class="section-kicker">Publications</p>
-              <h2 id="publications-title">Selected Publications</h2>
+              <p class="section-kicker" data-i18n="pub.pubKicker">Publications</p>
+              <h2 id="publications-title" data-i18n="pub.pubTitle">Selected Publications</h2>
             </div>
           </div>
           <div class="academic-list">
@@ -52,16 +59,16 @@
               </p>
             </div>
             <div class="academic-placeholder">
-              <h3>双向并行局部注意力视觉 Transformer 方法</h3>
-              <p class="academic-meta">Ziteng Wang,Junjie Wang,Xin Feng, 发明专利, CN118736295A, 2024</p>
-              <p>
+              <h3 data-i18n="pub.patent.title">双向并行局部注意力视觉 Transformer 方法</h3>
+              <p class="academic-meta" data-i18n="pub.patent.meta">Ziteng Wang,Junjie Wang,Xin Feng, 发明专利, CN118736295A, 2024</p>
+              <p data-i18n="pub.patent.abs">
                 本发明公开了双向并行局部注意力视觉Transformer方法，涉及计算机视觉技术领域。本发明首先在特征层面对补丁进行分组，在每个组内执行局部注意力操作，有效利用特征空间中补丁之间的关系，弥补信息丢失的问题，其次，为了有效融合补丁之间的信息，将基于语义的局部注意力和基于图像的局部注意力进行并行结合，通过双向自适应学习来增强ViT模型在小数据集上的性能，实验结果表明，该方法在计算量为15.2GFLOPs和参数量为57.2M的情况下，分别在CIFAR‑10数据集以及CIFAR‑100数据集上实现了97.93％和85.80％的准确性，相较其他方法，双向并行局部注意力的视觉Transformer在增强局部引导能力的同时，保持了局部注意力所需属性的有效性。
               </p>
             </div>
             <div class="academic-placeholder">
-              <h3>基于角度信息对无人机有效定位的研究</h3>
-              <p class="academic-meta">王子腾,李西然，张佳怡，刘凯, 河南工程学院学报, 2024</p>
-              <p>
+              <h3 data-i18n="pub.uav.title">基于角度信息对无人机有效定位的研究</h3>
+              <p class="academic-meta" data-i18n="pub.uav.meta">王子腾,李西然，张佳怡，刘凯, 河南工程学院学报, 2024</p>
+              <p data-i18n="pub.uav.abs">
                 无人机飞行技术对维护国家权益和捍卫国防安全具有重要意义，而纯方位无源定位是无人机编队调整和飞行的核心问题。针对发射信号无人机位置无偏差且编号已知的情况，给出了基于角度信息的无人机定位模型。在发射信号无人机位置无偏差情况下，除了指定两架编号特定的无人机，还需要一架无人机发射信号就可以实现接收信号无人机的有效定位。对于发射信号和接收信号无人机位置均略有偏差的问题，针对不同角度信息提出了具体的调整方案，使得无人机能够更加精确地到达指定位置，并对每个问题给出了相应的算例。
               </p>
             </div>
@@ -71,102 +78,80 @@
         <article class="academic-section" id="awards">
           <div class="section-heading compact">
             <div>
-              <p class="section-kicker">Awards</p>
-              <h2 id="awards-title">Honors & Awards</h2>
+              <p class="section-kicker" data-i18n="pub.awardKicker">Awards</p>
+              <h2 id="awards-title" data-i18n="pub.awardTitle">Honors &amp; Awards</h2>
             </div>
           </div>
           <div class="academic-list">
             <div class="academic-placeholder">
-              <h3>氢能全链条关键参数集成智能传感与仪器系统研发与应用</h3>
-              <p class="academic-meta">重庆市重大科研项目(先进制造专项), 2026，参研</p>
-              <p>
-                负责多源数据耦合的氢泄漏智能化风险监控与预警算法研发.
-              </p>
-            </div>
-          <div class="academic-list">
-            <div class="academic-placeholder">
-              <h3>AI赋能高校钢琴教育课堂“人机协同”混合式教学模式创新与实践研究</h3>
-              <p class="academic-meta">吉林省高教科研课题, 2026，参研</p>
-              <p>
-                立项编号：JGJX26D0562.
-              </p>
-            </div>
-          <div class="academic-list">
-            <div class="academic-placeholder">
-              <h3>第十六届 MathorCup 数学应用挑战赛</h3>
-              <p class="academic-meta">中国优选法统筹法与经济数学研究会, 2026</p>
-              <p>
-                西南赛区二等奖.第一负责人
-              </p>
+              <h3 data-i18n="award.hydrogen.title">氢能全链条关键参数集成智能传感与仪器系统研发与应用</h3>
+              <p class="academic-meta" data-i18n="award.hydrogen.meta">重庆市重大科研项目(先进制造专项), 2026，参研</p>
+              <p data-i18n="award.hydrogen.desc">负责多源数据耦合的氢泄漏智能化风险监控与预警算法研发.</p>
             </div>
             <div class="academic-placeholder">
-              <h3>“华为杯”第二十二届中国研究生数学建模竞赛</h3>
-              <p class="academic-meta">中国学位与研究生教育学会, 2025</p>
-              <p>
-                国家一等奖、全国第26名.第一负责人
-              </p>
+              <h3 data-i18n="award.piano.title">AI赋能高校钢琴教育课堂“人机协同”混合式教学模式创新与实践研究</h3>
+              <p class="academic-meta" data-i18n="award.piano.meta">吉林省高教科研课题, 2026，参研</p>
+              <p data-i18n="award.piano.desc">立项编号：JGJX26D0562.</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆理工大学优秀共青团员</h3>
-              <p class="academic-meta">重庆理工大学, 2025-2026</p>
+              <h3 data-i18n="award.mathorcup16.title">第十六届 MathorCup 数学应用挑战赛</h3>
+              <p class="academic-meta" data-i18n="award.mathorcup16.meta">中国优选法统筹法与经济数学研究会, 2026</p>
+              <p data-i18n="award.mathorcup16.desc">西南赛区二等奖.第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>第七届中青杯全国大学生数学建模竞赛</h3>
-              <p class="academic-meta">中国国际科技促进会综合素质与职业发展教育专业委员会, 2025</p>
-              <p>
-                国家三等奖.第一负责人
-              </p>
+              <h3 data-i18n="award.huawei22.title">“华为杯”第二十二届中国研究生数学建模竞赛</h3>
+              <p class="academic-meta" data-i18n="award.huawei22.meta">中国学位与研究生教育学会, 2025</p>
+              <p data-i18n="award.huawei22.desc">国家一等奖、全国第26名.第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>美国大学生 MCM/ICM 数学建模竞赛</h3>
-              <p class="academic-meta">美国数学及其应用联合会, 2025</p>
-              <p>
-                Meritorious Winner(一等奖).第一负责人
-              </p>
+              <h3 data-i18n="award.league1.title">重庆理工大学优秀共青团员</h3>
+              <p class="academic-meta" data-i18n="award.league1.meta">重庆理工大学, 2025-2026</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆市第一届 AI 大模型创新应用大赛</h3>
-              <p class="academic-meta">重庆市教育委员会, 2025</p>
-              <p>
-                重庆市一等奖.第一负责人
-              </p>
+              <h3 data-i18n="award.zhongqing7.title">第七届中青杯全国大学生数学建模竞赛</h3>
+              <p class="academic-meta" data-i18n="award.zhongqing7.meta">中国国际科技促进会综合素质与职业发展教育专业委员会, 2025</p>
+              <p data-i18n="award.zhongqing7.desc">国家三等奖.第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>第十五届 MathorCup 数学应用挑战赛</h3>
-              <p class="academic-meta">中国优选法统筹法与经济数学研究会, 2025</p>
-              <p>
-                西南赛区二等奖.第一负责人
-              </p>
+              <h3 data-i18n="award.mcm.title">美国大学生 MCM/ICM 数学建模竞赛</h3>
+              <p class="academic-meta" data-i18n="award.mcm.meta">美国数学及其应用联合会, 2025</p>
+              <p data-i18n="award.mcm.desc">Meritorious Winner(一等奖).第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>第五届 MathorCup 数学应用挑战赛一大数据竞赛</h3>
-              <p class="academic-meta">中国优选法统筹法与经济数学研究会, 2024</p>
-              <p>
-                全国三等奖.第二负责人
-              </p>
+              <h3 data-i18n="award.aiComp.title">重庆市第一届 AI 大模型创新应用大赛</h3>
+              <p class="academic-meta" data-i18n="award.aiComp.meta">重庆市教育委员会, 2025</p>
+              <p data-i18n="award.aiComp.desc">重庆市一等奖.第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆理工大学一等奖学金</h3>
-              <p class="academic-meta">重庆理工大学, 2024-2025</p>
+              <h3 data-i18n="award.mathorcup15.title">第十五届 MathorCup 数学应用挑战赛</h3>
+              <p class="academic-meta" data-i18n="award.mathorcup15.meta">中国优选法统筹法与经济数学研究会, 2025</p>
+              <p data-i18n="award.mathorcup15.desc">西南赛区二等奖.第一负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆理工大学优秀研究生</h3>
-              <p class="academic-meta">重庆理工大学, 2024-2025</p>
+              <h3 data-i18n="award.bigdata5.title">第五届 MathorCup 数学应用挑战赛一大数据竞赛</h3>
+              <p class="academic-meta" data-i18n="award.bigdata5.meta">中国优选法统筹法与经济数学研究会, 2024</p>
+              <p data-i18n="award.bigdata5.desc">全国三等奖.第二负责人</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆理工大学科技创新先进个人</h3>
-              <p class="academic-meta">重庆理工大学, 2024-2025  </p>
+              <h3 data-i18n="award.scholarship.title">重庆理工大学一等奖学金</h3>
+              <p class="academic-meta" data-i18n="award.scholarship.meta">重庆理工大学, 2024-2025</p>
             </div>
             <div class="academic-placeholder">
-              <h3>重庆理工大学优秀共青团员</h3>
-              <p class="academic-meta">重庆理工大学, 2024-2025</p>
+              <h3 data-i18n="award.outstandingGrad.title">重庆理工大学优秀研究生</h3>
+              <p class="academic-meta" data-i18n="award.outstandingGrad.meta">重庆理工大学, 2024-2025</p>
             </div>
             <div class="academic-placeholder">
-              <h3>“高教社杯”全国大学生数学建模竞赛</h3>
-              <p class="academic-meta">高教社, 2022</p>
-              <p>
-                全国一等奖、河南省第一名.第一负责人
-              </p>
+              <h3 data-i18n="award.innovation.title">重庆理工大学科技创新先进个人</h3>
+              <p class="academic-meta" data-i18n="award.innovation.meta">重庆理工大学, 2024-2025</p>
+            </div>
+            <div class="academic-placeholder">
+              <h3 data-i18n="award.league2.title">重庆理工大学优秀共青团员</h3>
+              <p class="academic-meta" data-i18n="award.league2.meta">重庆理工大学, 2024-2025</p>
+            </div>
+            <div class="academic-placeholder">
+              <h3 data-i18n="award.cup.title">“高教社杯”全国大学生数学建模竞赛</h3>
+              <p class="academic-meta" data-i18n="award.cup.meta">高教社, 2022</p>
+              <p data-i18n="award.cup.desc">全国一等奖、河南省第一名.第一负责人</p>
             </div>
           </div>
         </article>
@@ -175,7 +160,7 @@
 
     <footer class="site-footer">
       <span>© CC-By Ziteng Wang, 2026</span>
-      <span><a href="index.html">Back to profile</a></span>
+      <span><a href="index.html" data-i18n="footer.backProfile">Back to profile</a></span>
     </footer>
   </body>
 </html>

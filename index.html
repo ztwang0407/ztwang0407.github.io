@@ -6,7 +6,7 @@
     <meta name="description" content="About Ziteng Wang.">
     <title data-i18n="about.docTitle">About Ziteng Wang</title>
     <link rel="icon" href="assets/images/icon.avif">
-    <link rel="stylesheet" href="assets/styles.css?v=20260921">
+    <link rel="stylesheet" href="assets/styles.css?v=20260923">
     <script src="assets/i18n.js?v=2"></script>
   </head>
   <body>
@@ -79,29 +79,111 @@
 
           <section class="resume-section" aria-labelledby="experience-title">
             <h2 id="experience-title" data-i18n="about.work">Work Experience</h2>
-            <div class="timeline">
-              <article class="timeline-item">
-                <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-content">
-                  <div class="year" data-i18n="about.workY1">Sept. 2026 - Now</div>
-                  <h3 data-i18n="about.workEmbodied">Embodied Vision Intern</h3>
-                  <p><a href="https://www.noetixrobotics.com/" data-i18n="about.workCompany1">Noetix Robotics.</a></p>
+            <!--
+              实习卡片：结构与项目卡片一致（默认折叠只显示标题和时间，悬停展开，移开折叠）。
+              写法同项目卡：中文放 class="lang-zh"，英文放 class="lang-en"；
+              分点用 <ul class="lang-zh"><li>…</li></ul>，重点用 <span class="hl">…</span>；
+              日期走 i18n 词典（about.workY1/Y2/Y3），其余内容直接写在这里。
+              注意：下面三段实习的“简介/主要工作”是占位草稿，请按你的真实经历修改。
+            -->
+            <div class="project-list">
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh"><a href="https://www.noetixrobotics.com/">松延动力</a><span class="work-role"> · 具身视觉实习生</span></span>
+                    <span class="lang-en"><a href="https://www.noetixrobotics.com/">Noetix Robotics</a><span class="work-role"> · Embodied Vision Intern</span></span>
+                  </h3>
+                  <span class="project-date" data-i18n="about.workY1">Sept. 2026 - Now</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">实习简介：</strong>参与人形机器人具身智能方向研发，主要负责机器人视觉感知与操作算法的数据、训练与真机验证。</span>
+                      <span class="lang-en"><strong class="project-label">Overview:</strong> Worked on embodied-intelligence R&amp;D for humanoid robots, focusing on visual perception and manipulation algorithms — data, training, and real-robot validation.</span>
+                    </p>
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                      <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                    </p>
+                    <ul class="lang-zh">
+                      <li>搭建<strong class="hl">视觉感知与数据采集</strong>流程：相机/手眼标定、遥操作示范数据采集与清洗，形成可复用的训练数据管线；</li>
+                      <li>参与<strong class="hl">VLA / 模仿学习模型</strong>的训练与评测，迭代数据配比与超参，提升抓取与操作任务成功率；</li>
+                      <li>在<strong class="hl">真机</strong>上完成算法部署与验证，定位并修复感知—控制链路问题。</li>
+                    </ul>
+                    <ul class="lang-en">
+                      <li>Built the <strong class="hl">visual perception and data-collection</strong> pipeline: camera/eye-to-hand calibration, teleoperation demonstration data collection and cleaning for reusable training sets;</li>
+                      <li>Trained and evaluated <strong class="hl">VLA / imitation-learning</strong> models, iterating on data mixing and hyperparameters to improve grasping and manipulation success rates;</li>
+                      <li>Deployed and validated algorithms on the <strong class="hl">real robot</strong>, diagnosing issues across the perception–control loop.</li>
+                    </ul>
+                  </div>
                 </div>
               </article>
-              <article class="timeline-item">
-                <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-content">
-                  <div class="year" data-i18n="about.workY2">Jul. 2026 - Sept. 2026</div>
-                  <h3 data-i18n="about.workAlgorithm">Algorithm Intern</h3>
-                  <p><a href="http://www.zddps.cn/about" data-i18n="about.workCompany2">CHONGQING ZDNK SOFTWARE CORP.</a></p>
+
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh"><a href="http://www.zddps.cn/about">重庆正大能科科技有限公司</a><span class="work-role"> · 算法实习生</span></span>
+                    <span class="lang-en"><a href="http://www.zddps.cn/about">CHONGQING ZDNK SOFTWARE CORP.</a><span class="work-role"> · Algorithm Intern</span></span>
+                  </h3>
+                  <span class="project-date" data-i18n="about.workY2">Jul. 2026 - Sept. 2026</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">实习简介：</strong>参与<strong class="hl">重庆市住建委智慧工地平台</strong>项目，主要技术栈为<strong class="hl">YOLO11、ByteTrack、SegFormer、UNet、AnimeGANv3、Qwen3.6-35B、ACL、PyTorch</strong>。该项目为<strong class="hl">面向施工现场的 AI 安全巡检系统</strong>，构建<strong class="hl">小模型检测</strong>与<strong class="hl">视觉大模型语义判断</strong>和<strong class="hl">大小模型协同</strong>的三层算法体系，覆盖<span class="hl"> 40 </span>余种风险场景，实现施工装备与人员追踪检测状态并进行<strong class="hl">图像脱敏</strong>处理，支持 NVIDIA 与华为昇腾双端部署。</span>
+                      <span class="lang-en"><strong class="project-label">Overview:</strong> Worked on AI vision algorithm development and delivery for government and campus scenarios, covering the full pipeline from data and training to serving and edge deployment.</span>
+                    </p>
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                      <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                    </p>
+                    <ul class="lang-zh">
+                      <li><strong class="hl">设计三层算法架构</strong>：使用自建数据集训练下游任务<strong class="hl">YOLO</strong>模型执行危险区域闯入等11类高频检测任务，<strong class="hl">Qwen3.6-35B</strong>执行基坑积水变化等28类强语义巡检任务，部分复杂场景任务采用<strong class="hl">检测抠图与VLM 判断组合</strong>的方式进行识别，如判断车身清洁度等，各类型mAP达<span class="hl">95%、97.3%、96%</span>以上。</li>
+                      <li><strong class="hl">围挡分割模型选型</strong>：Nvidia采用<strong class="hl">SegFormer-B5</strong>实现围挡像素级分割；迁移昇腾310P3时发现SegFormer转OM后精度下降，所以改用<strong class="hl">UNet</strong>分割并重写归一化前处理，通过softmax后处理恢复像素级掩码，以围挡像素数阈值判定围挡是否存在，准确率由<span class="hl">36%</span>提升至<span class="hl">90%</span>。</li>
+                      <li><strong class="hl">多目标跟踪与行为判定</strong>:采用<strong class="hl">ByteTrack</strong>生成track_id与逐帧轨迹；基于<strong class="hl">相邻帧中心点累计位移</strong>设计按类别分阈值的运动判定逻辑，输出状态信号；针对实际帧率与跟踪器默认帧率的失配问题，调整丢失缓冲参数缓解遮挡后ID切换。</li>
+                      <li><strong class="hl">实现检测结果隐私脱敏</strong>：构建<strong class="hl">敏感区域打码</strong>与<strong class="hl">AnimeGANv3</strong>整图卡通化的脱敏管线，检测结果图仅在脱敏成功后对外交付，实现结果图可对外展示且不泄露隐私信息。</li>
+                    </ul>
+                    <ul class="lang-en">
+                      <li><strong class="hl">Designed a three-tier algorithm architecture</strong>: Utilized a custom dataset to train downstream <strong class="hl">YOLO</strong> models for 11 types of high-frequency detection tasks (e.g., unauthorized entry into hazardous zones) and <strong class="hl">Qwen3.6-35B</strong> for 28 types of semantic-rich inspection tasks (e.g., monitoring water accumulation in foundation pits). Complex scenarios—such as assessing vehicle cleanliness—employed a <strong class="hl">combination of detection/cropping and VLM-based judgment</strong>; mAP scores for these categories exceeded <span class="hl">95%, 97.3%, and 96%</span>, respectively.</li>
+                      <li><strong class="hl">Construction hoarding segmentation model selection</strong>: Initially used <strong class="hl">SegFormer-B5</strong> for pixel-level segmentation of construction hoardings; however, accuracy dropped during the migration from Nvidia to Ascend 310P3 (specifically during the SegFormer-to-OM conversion). Consequently, switched to <strong class="hl">UNet</strong> for segmentation, rewrote the normalization preprocessing, and recovered pixel-level masks via softmax post-processing. Hoarding presence was determined based on pixel count thresholds, raising accuracy from <span class="hl">36%</span> to <span class="hl">90%</span>.</li>
+                      <li><strong class="hl">Multi-object tracking and behavior analysis</strong>: Employed <strong class="hl">ByteTrack</strong> to generate track IDs and frame-by-frame trajectories. Designed motion analysis logic with category-specific thresholds based on the <strong class="hl">cumulative displacement of center points across adjacent frames</strong> to output status signals. Addressed the mismatch between actual and default tracker frame rates by adjusting "lost buffer" parameters to mitigate ID switching caused by occlusions.</li>
+                      <li><strong class="hl">Implemented privacy anonymization for detection results</strong>: Built an anonymization pipeline featuring <strong class="hl">sensitive area masking</strong> and <strong class="hl">AnimeGANv3-based whole-image cartoonization</strong>. Detection result images are released only after successful anonymization, enabling public display without compromising private information.</li>
+                    </ul>
+                  </div>
                 </div>
               </article>
-              <article class="timeline-item">
-                <span class="timeline-dot" aria-hidden="true"></span>
-                <div class="timeline-content">
-                  <div class="year" data-i18n="about.workY3">Mar. 2026 - Jul. 2026</div>
-                  <h3 data-i18n="about.workAlgorithm">Algorithm Intern</h3>
-                  <p><a href="http://www.datamatrixai.com/#/index" data-i18n="about.workCompany3">Quantum Matrix of Chengdu</a></p>
+
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh"><a href="http://www.datamatrixai.com/#/index">成都量子矩阵科技</a><span class="work-role"> · 算法实习生</span></span>
+                    <span class="lang-en"><a href="http://www.datamatrixai.com/#/index">Quantum Matrix of Chengdu</a><span class="work-role"> · Algorithm Intern</span></span>
+                  </h3>
+                  <span class="project-date" data-i18n="about.workY3">Mar. 2026 - Jul. 2026</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">实习简介：</strong>参与<strong class="hl">中车集团风力发电机扇叶制作流程检测项目</strong>，技术栈为<strong class="hl">PyTorch、YOLO、SAM3、Gemma4</strong>。该项目面向中车叶片生产场景，基于目标检测、实例分割与多模态大模型构建关键工步智能识别系统，实现工步状态的自动识别与过程记录。</span>
+                      <span class="lang-en"><strong class="project-label">Overview:</strong> Participated in the <strong class="hl">inspection project for the wind turbine blade manufacturing process at CRRC Group</strong>, utilizing a technology stack comprising <strong class="hl">PyTorch, YOLO, SAM3, and Gemma4</strong>. Tailored to CRRC's blade production environment, the project developed an intelligent recognition system for key manufacturing steps—leveraging object detection, instance segmentation, and large multimodal models—to enable automated recognition of process stages and comprehensive process logging.</span>
+                    </p>
+                    <p>
+                      <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                      <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                    </p>
+                    <ul class="lang-zh">
+                      <li>基于 <strong class="hl">YOLOv8s</strong> 完成真空管、强化布等 4 类工步场景的目标检测，输出目标类别与位置，并记录当前工步起止状态</li>
+                      <li>基于 <strong class="hl">SAM3</strong> 进行目标实例分割，结合 ROI 区域约束与多帧连续记录跟踪目标进出指定区域，以进入区域触发开始、离开区域触发结束判定工步起止，抑制单帧误判</li>
+                      <li>基于 <strong class="hl">Gemma4</strong> 多模态大模型，使用<strong class="hl">基准图</strong>结合<strong class="hl">Prompt</strong> 进行图文比对，识别工人在扇叶内的拉布作业行为</li>
+                      <li>针对部分目标与扇叶背景同色导致的误识别问题，采用 <strong class="hl">HSV 颜色空间过滤、灰度预处理前后处理策略优化</strong>，识别准确率由 <span class="hl">50%</span>提升至 <span class="hl">95%</span></li>
+                    </ul>
+                    <ul class="lang-en">
+                      <li>Utilized <strong class="hl">YOLOv8s</strong> to perform object detection for four types of work-step scenarios—such as vacuum tubes and reinforcing fabric—outputting object categories and locations while logging the start and end status of each work step.</li>
+                      <li>Performed object instance segmentation using <strong class="hl">SAM3</strong>; combined ROI constraints with multi-frame tracking to monitor object movement into and out of designated areas—triggering the start and end of work steps based on these transitions—thereby mitigating misidentifications caused by single-frame errors.</li>
+                      <li>Leveraged the <strong class="hl">Gemma4</strong> multimodal large model to compare images and text—using <strong class="hl">reference images</strong> and <strong class="hl">prompts</strong>—to identify workers' fabric-pulling operations within the fan blades.</li>
+                      <li>Addressed misidentification issues caused by color similarity between certain objects and the fan blade background by employing <strong class="hl">HSV color space filtering</strong> and optimized <strong class="hl">grayscale preprocessing/post-processing strategies</strong>, resulting in an increase in recognition accuracy from <span class="hl">50%</span> to <span class="hl">95%</span>.</li>
+                    </ul>
+                  </div>
                 </div>
               </article>
             </div>
@@ -169,7 +251,7 @@
                   <ul class="lang-zh">
                     <li>基于<strong class="hl">STEERER</strong>构建多摄像头实时人群密度估计系统，采用<strong class="hl">HRNet-W18</strong>骨干与密度回归<strong class="hl">CountingHead</strong>，通过 MOE 多分辨率融合缓解人头尺度差异，输出像素级密度图，实现大型活动现场人群数量统计与超限预警。</li>
                     <li>为解决单 GPU 多路视频并发下的实时性问题，设计<strong class="hl">取流—推理解耦</strong>管线：各路摄像头独立拉流解码、抽帧入队，经固定容量缓冲仅保留最新帧、丢弃陈旧帧，推理端统一调度消费，避免帧堆积导致延迟膨胀，保障多路并发下的端到端实时性。</li>
-                    <li>针对夜间低光场景的计数鲁棒性问题，设计密度图后处理算法：以<strong class="hl">高斯滤波和阈值积分</strong>抑制噪点假密度、防止计数系统性偏高，通过<strong class="hl">局部极大值搜索</strong>提取人头候选峰、结合连通域统计聚合粘连密度团，从密度图恢复人员位置与计数，解决高密度场景的饱和低估，复杂场景人群计数由约<span class="hl">700</span>修正至<span class="hl">8000</span>人量级，准确率达<span class="hl">90%</span>以上。</li>
+                    <li>针对夜间低光场景的计数鲁棒性问题，设计密度图后处理算法：以<strong class="hl">高斯滤波和阈值积分</strong>抑制噪点假密度、防止计数系统性偏高，通过<strong class="hl">局部极大值搜索</strong>提取人头候选峰、结合连通域统计聚合粘连密度团，从密度图恢复人员位置与计数，解决高密度场景的饱和低估，复杂场景人群计数由约<span class="hl">700人</span>修正至<span class="hl">8000</span>人量级，准确率达<span class="hl">90%</span>以上。</li>
                   </ul>
                   <ul class="lang-en">
                     <li>Developed a multi-camera, real-time crowd density estimation system based on <strong class="hl">STEERER</strong>, utilizing the <strong class="hl">HRNet-W18</strong> backbone and a density regression <strong class="hl">CountingHead</strong>. The system employs a Mixture-of-Experts (MoE) multi-resolution fusion strategy to mitigate head-scale variations and outputs pixel-level density maps, enabling crowd counting and capacity-limit alerts for large-scale events.</li>

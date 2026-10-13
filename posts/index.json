@@ -1,14 +1,16 @@
 [
   {
-    "slug": "具身视觉基础学习",
-    "title": "具身视觉基础学习",
-    "title_en": "Embodied Visual Foundation Learning",
-    "date": "2026-10-13",
-    "summary": "包括世界坐标系、相机坐标系及其转换过程和四元数以及相机内外参参数",
-    "summary_en": "Includes the world coordinate system, camera coordinate system and their transformation processes, quaternions, as well as intrinsic and extrinsic camera parameters.",
-    "tags": ["Notes", "Robotics"],
-    "type": "pdf"
-  },
+  "slug": "具身视觉基础学习",
+  "title": "具身视觉基础学习",
+  "title_en": "Embodied Visual Foundation Learning",
+  "date": "2026-10-13",
+  "summary": "包括世界坐标系、相机坐标系及其转换过程和四元数以及相机内外参参数",
+  "summary_en": "Includes the world coordinate system, camera coordinate system and their transformation processes, quaternions, as well as intrinsic and extrinsic camera parameters.",
+  "tags": ["Notes", "Robotics"],
+  "type": "pdf",
+  "file": "blog/具身视觉内容学习.pdf",
+  "height": "90vh"
+},
   {
     "slug": "参数化手部模型MANO",
     "title": "MANO手部姿态模型学习",

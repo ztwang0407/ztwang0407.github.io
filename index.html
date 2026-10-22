@@ -347,6 +347,44 @@
                 </div>
               </article>
 
+              <article class="project-card">
+                <div class="project-head">
+                  <h3>
+                    <span class="lang-zh">重庆市第七人民医院医疗多 Agent 问答系统 ｜ 项目经理&算法开发</span>
+                    <span class="lang-en">Multi-Agent Medical Q&A System for Chongqing No. 7 People's Hospital | Project Manager&Algorithm Development</span>
+                  </h3>
+                  <span class="project-date">2026.01 - 2026.03</span>
+                </div>
+                <div class="project-body">
+                  <div class="project-body-inner">
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">技术栈：</strong>:Qwen3.5-9B、SFT、GSPO</span>
+                    <span class="lang-en"><strong class="project-label">Tech Stack:</strong> Qwen3.5-9B、SFT、GSPO</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">项目背景：</strong>围绕长尾医疗推理与安全回答数据稀缺问题，开展医疗数据合成与模型能力增强; 同时面向传统单 Agent 医疗问答在复杂问题分析、多轮理解、响应效率和安全约束方面的不足，构建多症状、多维度咨询场景下的医疗智能问答系统。</span>
+                    <span class="lang-en"><strong class="project-label">Background:</strong> To address the scarcity of data for long-tail medical reasoning and safe response generation, this project focuses on medical data synthesis and the enhancement of model capabilities. Furthermore, to overcome the limitations of traditional single-agent medical Q&A systems—such as difficulties in analyzing complex queries, challenges in multi-turn comprehension, suboptimal response efficiency, and inadequate adherence to safety constraints—we are developing an intelligent medical Q&A system designed for multi-symptom, multi-dimensional consultation scenarios.</span>
+                  </p>
+                  <p>
+                    <span class="lang-zh"><strong class="project-label">主要工作：</strong></span>
+                    <span class="lang-en"><strong class="project-label">Main Work:</strong></span>
+                  </p>
+                  <ul class="lang-zh">
+                    <li>针对长尾医疗推理和安全回答短板，构建能力感知数据合成流程，通过<strong class="hl">多 Agent 协作生成高质量训练数据</strong>; 基于 <strong class="hl">Qwen3.5-9B </strong>进行医疗问答 SFT，以六维 Rubric 用于能力诊断、数据筛选、质量评估和安全性控制。收集 3,304 条高质量 SFT 样本和 800 条高难度评测集; 经 SFT 优化后，5 项 benchmark 均分 48.7 提升至 57.7。</li>
+                    <li>基于 <strong class="hl">Qwen3.5-9B </strong>训练医疗问答 VLM 作为 3 类医疗 Agent 的核心推理引擎，采用 <strong class="hl">SFT+GSPO </strong>两阶段优化，别使用 40 万/10 万条医疗 VQA 数据; 设计多维度复合奖励机制，从医学事实一致性、推理完整性、回答安全性和格式规范性等维度优化模型输出质量。</li>
+                    <li>将医疗问答能力拆分为 7 类原子 Skill, 并由 3 类专业 Agent 按任务自主调用, 之间完全解耦;70% 单 Agent与 30%Swarm 协作，实现复杂问题自动拆解、多 Agent 并行推理与共享上下文同步。</li>
+                    <li>构建双层记忆与熵管理机制，实现会话历史压缩 35% 与跨会话相似案例召回; 结合安全约束系统，通过YAML 定义 Agent 能力边界，并支持医疗安全输出修复。</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>To address shortcomings in long-tail medical reasoning and safe response generation, we developed a capability-aware data synthesis pipeline that leverages <strong class="hl">multi-agent collaboration to produce high-quality training data</strong>. We performed Supervised Fine-Tuning (SFT) on the <strong class="hl">Qwen3.5-9B</strong> model for medical Q&A, utilizing a six-dimensional rubric for capability diagnosis, data filtering, quality assessment, and safety control. This process yielded 3,304 high-quality SFT samples and an 800-item, high-difficulty evaluation set. Following SFT optimization, the average score across five benchmarks improved from 48.7 to 57.7.</li>
+                    <li>We trained a medical Q&A Vision-Language Model (VLM) based on <strong class="hl">Qwen3.5-9B</strong> to serve as the core reasoning engine for three types of medical agents. The model underwent a two-stage optimization process—<strong class="hl">SFT followed by GSPO</strong>—using 400,000 and 100,000 medical VQA samples, respectively. A multi-dimensional composite reward mechanism was implemented to enhance output quality by evaluating factors such as medical factual consistency, reasoning completeness, response safety, and adherence to formatting standards.</li>
+                    <li>Medical Q&A capabilities were decomposed into seven distinct "atomic skills," which are independently invoked by three types of specialized agents—ensuring full decoupling between them. A hybrid operational model—comprising 70% single-agent execution and 30% swarm-based collaboration—enables the automated decomposition of complex queries, parallel reasoning across multiple agents, and synchronized sharing of context.</li>
+                    <li>We established a dual-layer memory and entropy management mechanism, achieving a 35% reduction in conversation history size while enabling the retrieval of similar cases from past sessions. Furthermore, a safety constraint system—defined via YAML—establishes the operational boundaries for each agent and supports the correction of medical outputs to ensure safety.</li>
+                  </ul>
+                  </div>
+                </div>
+              </article>
+              
             </div>
           </section>
         </div>

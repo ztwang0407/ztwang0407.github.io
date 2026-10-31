@@ -121,6 +121,7 @@
       "pub.uav.abs":
         "无人机飞行技术对维护国家权益和捍卫国防安全具有重要意义，而纯方位无源定位是无人机编队调整和飞行的核心问题。针对发射信号无人机位置无偏差且编号已知的情况，给出了基于角度信息的无人机定位模型。在发射信号无人机位置无偏差情况下，除了指定两架编号特定的无人机，还需要一架无人机发射信号就可以实现接收信号无人机的有效定位。对于发射信号和接收信号无人机位置均略有偏差的问题，针对不同角度信息提出了具体的调整方案，使得无人机能够更加精确地到达指定位置，并对每个问题给出了相应的算例。",
 
+      "award.nation.title": "国家奖学金",
       "award.hydrogen.title": "氢能全链条关键参数集成智能传感与仪器系统研发与应用",
       "award.hydrogen.meta": "重庆市重大科研项目（先进制造专项），2026，参研",
       "award.hydrogen.desc": "负责多源数据耦合的氢泄漏智能化风险监控与预警算法研发。",
@@ -263,6 +264,7 @@
       "pub.uav.abs":
         "UAV flight technology is of great significance to safeguarding national rights and national defense security, and bearing-only passive localization is a core problem in UAV formation adjustment and flight. For the case where the signal-emitting UAVs are free of position bias and have known IDs, we present a UAV localization model based on angle information. When the emitting UAVs have no position bias, besides two UAVs with designated IDs, only one additional UAV needs to emit signals to achieve effective localization of the receiving UAVs. For the case where both emitting and receiving UAVs have slight position deviations, we propose concrete adjustment schemes for different angle information so that the UAVs can reach their designated positions more precisely, with worked examples given for each problem.",
 
+      "award.hydrogen.title": "National Scholarship",
       "award.hydrogen.title":
         "R&D and Application of an Intelligent Sensing and Instrumentation System Integrating Key Parameters Across the Hydrogen Energy Chain",
       "award.hydrogen.meta":
